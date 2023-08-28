@@ -9,5 +9,5 @@ class JWTBearer(HTTPBearer):
 		if verification.get('error'):
 			raise HTTPException(
 				status_code=status.HTTP_403_FORBIDDEN,
-		        detail=verification
+		        detail=verification['error']
 		    )

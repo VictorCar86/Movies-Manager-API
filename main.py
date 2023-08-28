@@ -2,8 +2,8 @@ from fastapi import FastAPI, Request
 from fastapi.responses import FileResponse
 from middlewares.error_handler import ErrorHandler
 from db.config import Base, engine
-from routes.movies import movies as moviesRouter
-from routes.auth import auth as authRouter
+from routes.movies import movies as movies_router
+from routes.auth import auth as auth_router
 import time
 
 app = FastAPI()
@@ -33,5 +33,5 @@ Base.metadata.create_all(bind=engine)
 def home():
 	return FileResponse('./test/index.html')
 
-app.include_router(moviesRouter)
-app.include_router(authRouter)
+app.include_router(movies_router)
+app.include_router(auth_router)
